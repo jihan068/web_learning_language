@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bingo - Develop your English skills in a fun way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar-wrapper">
+    <nav class="navbar container">
+      <!-- Brand Logo: Globe + bingo -->
+      <a href="#" class="nav-brand">
+        <span class="brand-icon">
+          <!-- Exact globe icon from reference -->
+          <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </span>
+        <span class="brand-text">bingo</span>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-i18n="nav.home">Home</a></li>
+        <li><a href="#course" class="nav-link" data-nav="course" data-i18n="nav.course">Course</a></li>
+        <li><a href="#schedule" class="nav-link" data-nav="schedule" data-i18n="nav.schedule">Schedule</a></li>
+        <li><a href="#quiz" class="nav-link" data-nav="quiz" data-i18n="nav.quiz">Quiz</a></li>
+        <li><a href="#practice" class="nav-link" data-nav="practice" data-i18n="nav.practice">Practice Hub</a></li>
+      </ul>
+
+      <!-- Nav Actions (Language Dropdown, Contact, Sign In Button) -->
+      <div class="nav-actions">
+        <!-- Language Switcher with Flag Icon (Pengaturan Bahasa) -->
+        <div class="lang-dropdown-container">
+          <button class="lang-dropdown-btn" id="langDropdownBtn" aria-label="Select Language">
+            <span class="flag-icon" id="currentFlag">
+              <!-- Default UK flag icon -->
+              <svg viewBox="0 0 640 480" class="flag-svg" width="20" height="15">
+                <path fill="#012169" d="M0 0h640v480H0z"/>
+                <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-179L0 64V0h75z"/>
+                <path fill="#C8102E" d="m424 288 216 159v33h-44L368 316v-28h56zm-176-96L32 33V0h44l228 168v24h-56zm176-96 216-160v33h-44L368 124V96h56zm-176 96L32 387v33h44l228-168v-24h-56z"/>
+                <path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/>
+                <path fill="#C8102E" d="M272 0h96v480h-96zM0 192h640v96H0z"/>
+              </svg>
+            </span>
+            <span class="lang-label" id="currentLangLabel">EN</span>
+            <svg class="chevron-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu">
+            <button class="lang-option active" data-lang="en">
+              <span class="flag-icon">
+                <svg viewBox="0 0 640 480" class="flag-svg" width="18" height="13">
+                  <path fill="#012169" d="M0 0h640v480H0z"/>
+                  <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-179L0 64V0h75z"/>
+                  <path fill="#C8102E" d="m424 288 216 159v33h-44L368 316v-28h56zm-176-96L32 33V0h44l228 168v24h-56zm176-96 216-160v33h-44L368 124V96h56zm-176 96L32 387v33h44l228-168v-24h-56z"/>
+                  <path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/>
+                  <path fill="#C8102E" d="M272 0h96v480h-96zM0 192h640v96H0z"/>
+                </svg>
+              </span>
+              <span>English (EN)</span>
+            </button>
+            <button class="lang-option" data-lang="id">
+              <span class="flag-icon">
+                <svg viewBox="0 0 640 480" class="flag-svg" width="18" height="13">
+                  <path fill="#E70011" d="M0 0h640v240H0z"/>
+                  <path fill="#FFFFFF" d="M0 240h640v240H0z"/>
+                </svg>
+              </span>
+              <span>Indonesia (ID)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contact link right after Language Dropdown -->
+        <a href="#contact" class="nav-link contact-nav-link" data-nav="contact" data-i18n="nav.contact">Contact</a>
+
+        <!-- Sign In / Sign Up Pill Button -->
+        <button class="btn-auth-pill" id="openAuthModalBtn" data-i18n="nav.auth">
+          Sign In/Sign Up
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-drawer" id="mobileDrawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#" class="mobile-link" data-i18n="nav.home">Home</a></li>
+        <li><a href="#course" class="nav-link" data-nav="course" data-i18n="nav.course">Course</a></li>
+        <li><a href="#schedule" class="nav-link" data-nav="schedule" data-i18n="nav.schedule">Schedule</a></li>
+        <li><a href="#quiz" class="nav-link" data-nav="quiz" data-i18n="nav.quiz">Quiz</a></li>
+        <li><a href="#practice" class="mobile-link" data-nav="practice" data-i18n="nav.practice">Practice Hub</a></li>
+        <li><a href="#contact" class="mobile-link" data-nav="contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="mobile-auth-wrapper">
+        <button class="btn-auth-pill w-full" id="mobileAuthBtn" data-i18n="nav.auth">Sign In/Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO LANDING PAGE ================= -->
+  <main class="hero-landing-page">
+    <div class="hero-container container">
+      
+      <!-- Left Column: Pill Badge Headline & CTA -->
+      <div class="hero-content">
+        <!-- Interactive Pill Badges Headline (Exact Reference Styling) -->
+        <div class="hero-title-cluster" aria-label="Develop your english skills in a fun way">
+          <!-- Row 1: [Develop] (your) English -->
+          <div class="title-row">
+            <span class="pill-badge pill-white">Develop</span>
+            <span class="pill-outline">your</span>
+            <span class="title-text-plain">English</span>
+          </div>
+
+          <!-- Row 2: [Skills] in a -->
+          <div class="title-row">
+            <span class="pill-badge pill-blue">Skills</span>
+            <span class="title-text-plain">in a</span>
+          </div>
+
+          <!-- Row 3: [Fun Way.] -->
+          <div class="title-row">
+            <span class="pill-badge pill-pink">
+              Fun Way.
+            </span>
+          </div>
+        </div>
+
+        <!-- Cohesive & Engaging Description -->
+        <p class="hero-description" data-i18n="hero.desc">
+          Ready to speak English with confidence? bingo offers bite-sized lessons, practical vocabulary, and interactive exercises that fit seamlessly into your daily schedule. Learn at your own pace and start seeing progress in minutes a day.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-actions">
+          <button class="btn-primary-pill" id="btnStartLearning" data-i18n="hero.ctaPrimary">
+            Start Learning
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Right Column: World Map Silhouette + Tightly Clustered Tutors with Speech Bubbles -->
+      <div class="hero-visual">
+        <div class="map-illustration-wrapper">
+          
+          <!-- Authentic Crisp World Map Silhouette Vector in Darker Green -->
+          <img src="world-map.svg" class="world-map-silhouette" alt="World Map Silhouette">
+
+          <!-- 4 Tightly Clustered Tutors Over Continents (Exact Reference Composition) -->
+          
+          <!-- Tutor 1: Male in Plaid Shirt (Americas / West) -->
+          <div class="tutor-card tutor-pos-1">
+            <div class="speech-bubble bubble-top">
+              <span>Hey</span>
+            </div>
+            <div class="avatar-ring ring-yellow">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=180&q=80" alt="Tutor" class="tutor-img">
+            </div>
+          </div>
+
+          <!-- Tutor 2: Male in Blue (Europe / North) -->
+          <div class="tutor-card tutor-pos-2">
+            <div class="speech-bubble bubble-top">
+              <span>Heya!</span>
+            </div>
+            <div class="avatar-ring ring-blue">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=180&q=80" alt="Tutor" class="tutor-img">
+            </div>
+          </div>
+
+          <!-- Tutor 3: Female Brunette (Center / South) -->
+          <div class="tutor-card tutor-pos-3">
+            <div class="speech-bubble bubble-top">
+              <span>Hello!</span>
+            </div>
+            <div class="avatar-ring ring-pink">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=180&q=80" alt="Tutor" class="tutor-img">
+            </div>
+          </div>
+
+          <!-- Tutor 4: East Asian Female in Yellow (Asia / East) -->
+          <div class="tutor-card tutor-pos-4">
+            <div class="speech-bubble bubble-top">
+              <span>Hi!</span>
+            </div>
+            <div class="avatar-ring ring-golden">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=180&q=80" alt="Tutor" class="tutor-img">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll Down Indicator (Exact like reference) -->
+    <div class="scroll-indicator">
+      <div class="mouse-icon">
+        <div class="mouse-wheel"></div>
+      </div>
+      <span class="scroll-text" data-i18n="hero.scrollDown">Scroll Down</span>
+    </div>
+  </main>
+
+  <!-- ================= COURSE CATALOG ================= -->
+  <section class="course-section" id="course" aria-labelledby="course-title">
+    <div class="container">
+      <div class="course-heading">
+        <p class="course-eyebrow" data-i18n="course.eyebrow">Choose your learning path</p>
+        <h2 id="course-title" data-i18n="course.title">Find Your English Course</h2>
+        <p class="course-intro" data-i18n="course.intro">Courses designed around your English goals and needs.</p>
+      </div>
+
+      <div class="course-grid">
+        <article class="course-card">
+          <div class="course-image-wrap">
+            <img class="course-image" src="image/card1.jpg" alt="Teacher guiding an online English class" data-i18n-alt="course.image1Alt" loading="lazy">
+          </div>
+          <div class="course-card-content">
+            <span class="course-number">01</span>
+            <p class="course-category" data-i18n="course.category1">English for work</p>
+            <h3 data-i18n="course.title1">English for Specific Purposes (ESP)</h3>
+            <p class="course-description" data-i18n="course.description1">Learn English tailored to your industry and professional needs.</p>
+            <span class="course-arrow" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <div class="course-image-wrap">
+            <img class="course-image" src="image/card2.jpg" alt="Student practicing English through an online video call" data-i18n-alt="course.image2Alt" loading="lazy">
+          </div>
+          <div class="course-card-content">
+            <span class="course-number">02</span>
+            <p class="course-category" data-i18n="course.category2">English for study</p>
+            <h3 data-i18n="course.title2">Academic English / EAP</h3>
+            <p class="course-description" data-i18n="course.description2">Build the reading, writing, presentation, and discussion skills you need for academic settings.</p>
+            <span class="course-arrow" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <div class="course-image-wrap">
+            <img class="course-image" src="image/card3.jpg" alt="Learners practicing conversation and speaking online" data-i18n-alt="course.image3Alt" loading="lazy">
+          </div>
+          <div class="course-card-content">
+            <span class="course-number">03</span>
+            <p class="course-category" data-i18n="course.category3">Build your confidence</p>
+            <h3 data-i18n="course.title3">Conversation / Speaking Class</h3>
+            <p class="course-description" data-i18n="course.description3">Practice speaking to become more fluent, confident, and natural.</p>
+            <span class="course-arrow" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <div class="course-image-wrap">
+            <img class="course-image" src="image/card4.jpg" alt="Student preparing for an English exam on a laptop" data-i18n-alt="course.image4Alt" loading="lazy">
+          </div>
+          <div class="course-card-content">
+            <span class="course-number">04</span>
+            <p class="course-category" data-i18n="course.category4">Test preparation</p>
+            <h3 data-i18n="course.title4">IELTS Preparation Course</h3>
+            <p class="course-description" data-i18n="course.description4">Build strategies and skills for the IELTS Listening, Reading, Writing, and Speaking sections.</p>
+            <span class="course-arrow" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="course-card">
+          <div class="course-image-wrap">
+            <img class="course-image" src="image/card5.jpg" alt="Student following a structured online learning course" data-i18n-alt="course.image5Alt" loading="lazy">
+          </div>
+          <div class="course-card-content">
+            <span class="course-number">05</span>
+            <p class="course-category" data-i18n="course.category5">Test preparation</p>
+            <h3 data-i18n="course.title5">TOEFL iBT / PBT Course</h3>
+            <p class="course-description" data-i18n="course.description5">Prepare for TOEFL with focused skill practice and test-taking strategies.</p>
+            <span class="course-arrow" aria-hidden="true">↗</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION: SCHEDULE PREVIEW ================= -->
+<section class="preview-section" id="schedule">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="pill-chip" data-i18n="sched.chip">Schedule</span>
+        <h2 class="section-title" data-i18n="sched.title">Learn Your Way, Every Day</h2>
+        <p class="section-subtitle" data-i18n="sched.subtitle">Follow our recommended daily track or build your own custom study routine with clear daily targets.</p>
+      </div>
+
+      <!-- Schedule Preview Box -->
+      <div class="schedule-preview-box">
+        <!-- Routine Selector Mode -->
+        <div class="schedule-mode-toggle">
+          <button class="mode-pill active" id="btnDefaultSchedule" data-i18n="sched.tabDefault">Recommended Track</button>
+          <button class="mode-pill" id="btnCustomSchedule" data-i18n="sched.tabCustom">Custom Routine</button>
+        </div>
+
+        <!-- Schedule Days Cards -->
+        <div class="schedule-days-grid" id="scheduleDaysView">
+          <!-- Today -->
+          <div class="day-routine-card today-card">
+            <div class="day-routine-header">
+              <span class="day-badge today-badge" data-i18n="sched.today">Today</span>
+              <span class="day-target" data-i18n="sched.targetToday">Target: 15 min • 10 New Words</span>
+            </div>
+            <h4 class="day-routine-title" data-i18n="sched.todayTopic">Essential Greetings & Small Talk</h4>
+            <ul class="routine-checklist">
+              <li class="checked"><span>✔</span> <span data-i18n="sched.item1">5 min: Audio flashcard drill</span></li>
+              <li class="checked"><span>✔</span> <span data-i18n="sched.item2">5 min: Sentence builder game</span></li>
+              <li><span>○</span> <span data-i18n="sched.item3">5 min: Pronunciation speaking test</span></li>
+            </ul>
+          </div>
+
+          <!-- Tomorrow -->
+          <div class="day-routine-card">
+            <div class="day-routine-header">
+              <span class="day-badge tomorrow-badge" data-i18n="sched.tomorrow">Tomorrow</span>
+              <span class="day-target" data-i18n="sched.targetTomorrow">Target: 15 min • Fluency Habit</span>
+            </div>
+            <h4 class="day-routine-title" data-i18n="sched.tomorrowTopic">Food Orders & Cafe Expressions</h4>
+            <ul class="routine-checklist">
+              <li><span>○</span> <span data-i18n="sched.item4">5 min: Real-life scenario listening</span></li>
+              <li><span>○</span> <span data-i18n="sched.item5">5 min: Shadowing & intonation drill</span></li>
+              <li><span>○</span> <span data-i18n="sched.item6">5 min: 3-question quick recap quiz</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="schedule-note text-center">
+          <span class="note-pill" data-i18n="sched.note">Tip: You can adjust study hours and difficulty goals anytime in your profile!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION: QUIZ PREVIEW ================= -->
+  <section class="preview-section" id="quiz">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="pill-chip" data-i18n="quiz.chip">Quiz</span>
+        <h2 class="section-title" data-i18n="quiz.title">Test Your Academic English</h2>
+        <p class="section-subtitle" data-i18n="quiz.subtitle">Challenge yourself with university-level vocabulary and academic writing concepts.</p>
+      </div>
+
+      <!-- Quiz Preview Box -->
+      <div class="quiz-preview-box">
+        <div class="quiz-header-row">
+          <span class="quiz-badge" id="quizCategory" data-i18n="quiz.category">Academic Vocabulary</span>
+          <span class="quiz-count" id="quizCounter" data-i18n="quiz.counter">Question 1 of 3</span>
+        </div>
+
+        <h3 class="quiz-question-text" id="quizQuestionText" data-i18n="quiz.sampleQ">
+          Which word is the best formal synonym for "to prove" in a Bachelor thesis?
+        </h3>
+
+        <div class="quiz-options-list" id="quizOptions">
+          <button class="quiz-opt-btn" data-correct="false">
+            <span>A</span> <span data-i18n="quiz.optA">Show up</span>
+          </button>
+          <button class="quiz-opt-btn" data-correct="true">
+            <span>B</span> <span data-i18n="quiz.optB">Substantiate</span>
+          </button>
+          <button class="quiz-opt-btn" data-correct="false">
+            <span>C</span> <span data-i18n="quiz.optC">Make real</span>
+          </button>
+        </div>
+
+        <div class="quiz-result-bar" id="quizResultBar" style="display: none;">
+          <span id="quizResultText">Correct! "Substantiate" means to provide evidence to support or prove a claim.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION: PRACTICE HUB ================= -->
+  <section class="practice-hub-section" id="practice" aria-labelledby="practice-title">
+    <div class="container practice-hub-layout">
+      <div class="practice-hub-content">
+        <p class="practice-hub-eyebrow" data-i18n="practice.eyebrow">Practice your way</p>
+        <h2 id="practice-title" data-i18n="practice.title">Practice Hub</h2>
+        <p class="practice-hub-intro" data-i18n="practice.intro">Strengthen your English with focused practice you can choose based on your learning goals.</p>
+
+        <div class="practice-feature-grid">
+          <article class="practice-feature">
+            <span class="practice-feature-icon" aria-hidden="true">↺</span>
+            <div>
+              <h3 data-i18n="practice.title1">Mistake Review</h3>
+              <p data-i18n="practice.description1">Review questions or material you got wrong before and understand the correct answers.</p>
+              <button class="practice-feature-action" type="button" data-practice-action="mistakes">
+                <span data-i18n="practice.action1">Review mistakes</span><span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="practice-feature">
+            <span class="practice-feature-icon" aria-hidden="true">Aa</span>
+            <div>
+              <h3 data-i18n="practice.title2">Vocabulary Practice</h3>
+              <p data-i18n="practice.description2">Review the vocabulary you have learned so it is easier to remember and use.</p>
+              <button class="practice-feature-action" type="button" data-practice-action="words">
+                <span data-i18n="practice.action2">Review words</span><span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="practice-feature">
+            <span class="practice-feature-icon" aria-hidden="true">♫</span>
+            <div>
+              <h3 data-i18n="practice.title3">Focused Practice</h3>
+              <p data-i18n="practice.description3">Strengthen Listening or Speaking through separate, focused practice sessions.</p>
+              <button class="practice-feature-action" type="button" data-practice-action="focused">
+                <span data-i18n="practice.action3">Choose a skill</span><span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="practice-feature">
+            <span class="practice-feature-icon" aria-hidden="true">◎</span>
+            <div>
+              <h3 data-i18n="practice.title4">Interactive Conversation</h3>
+              <p data-i18n="practice.description4">Practice real-world conversations through AI-powered roleplay simulations.</p>
+              <button class="practice-feature-action" type="button" data-practice-action="roleplay">
+                <span data-i18n="practice.action4">Start roleplay</span><span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="practice-hub-visual">
+        <img src="image/practice.jpg" alt="Tutor and student practicing English online" data-i18n-alt="practice.imageAlt" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION: CONTACT ================= -->
+  <section class="contact-section" id="contact" aria-labelledby="contact-title">
+    <div class="container contact-footer-grid">
+      <div class="contact-brand-column">
+        <h2 class="contact-brand" id="contact-title">bingo</h2>
+        <p class="contact-description" data-i18n="contact.description">Learn English with practical courses and focused practice built around your goals.</p>
+        <div class="contact-social">
+          <p class="contact-social-title" data-i18n="contact.socialTitle">Follow us</p>
+          <div class="contact-social-links">
+            <a class="social-link social-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><span aria-hidden="true">◎</span></a>
+            <a class="social-link social-whatsapp" href="https://www.whatsapp.com/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><span aria-hidden="true">wa</span></a>
+            <a class="social-link social-facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><span aria-hidden="true">f</span></a>
+            <a class="social-link social-tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><span aria-hidden="true">♪</span></a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="contact-footer-column" aria-label="Footer navigation">
+        <h3 data-i18n="contact.linksTitle">Explore</h3>
+        <a href="#course" data-i18n="nav.course">Course</a>
+        <a href="#schedule" data-i18n="nav.schedule">Schedule</a>
+      </nav>
+
+      <nav class="contact-footer-column" aria-label="Learning navigation">
+        <h3 data-i18n="contact.learnTitle">Learning</h3>
+        <a href="#quiz" data-i18n="nav.quiz">Quiz</a>
+        <a href="#practice" data-i18n="nav.practice">Practice Hub</a>
+      </nav>
+
+      <div class="contact-footer-column contact-details">
+        <h3 data-i18n="contact.contactTitle">Contact us</h3>
+        <a class="contact-email" href="mailto:hello@bingo-english.com">hello@bingo-english.com</a>
+        <p data-i18n="contact.contactNote">Questions about a course? Send us an email.</p>
+      </div>
+
+      <div class="contact-footer-column contact-join">
+        <h3 data-i18n="contact.joinTitle">Join Bingo</h3>
+        <p data-i18n="contact.joinDescription">Start building your English skills with us.</p>
+        <button class="contact-join-button" id="contactJoinBtn" type="button">
+          <span data-i18n="contact.joinAction">Get started</span><span aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUTH MODAL (SIGN IN / SIGN UP) ================= -->
+  <div class="modal-overlay" id="authModalOverlay">
+    <div class="auth-modal-card">
+      <button class="modal-close-btn" id="closeAuthModalBtn">&times;</button>
+      
+      <!-- Brand in Modal -->
+      <div class="modal-brand-header text-center">
+        <div class="brand-logo-modal">
+          <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>bingo</span>
+        </div>
+        <p class="modal-subtitle">Develop your English skills in a fun way</p>
+      </div>
+
+      <!-- Auth Switcher Tabs -->
+      <div class="auth-tab-switch">
+        <button class="auth-tab active" id="tabSignIn">Sign In</button>
+        <button class="auth-tab" id="tabSignUp">Sign Up</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form class="auth-form" id="signInForm">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" required>
+        </div>
+        <div class="form-row-between">
+          <label class="remember-label">
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-primary-pill w-full mt-2">Sign In to Bingo</button>
+      </form>
+
+      <!-- Sign Up Form (hidden by default) -->
+      <form class="auth-form" id="signUpForm" style="display: none;">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Create Password</label>
+          <input type="password" placeholder="At least 8 characters" required>
+        </div>
+        <button type="submit" class="btn-primary-pill w-full mt-2">Create Free Account</button>
+      </form>
+
+      <div class="modal-footer-terms text-center">
+        By continuing, you agree to Bingo's <a href="#">Terms of Service</a> & <a href="#">Privacy Policy</a>.
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NOTIFICATION TOAST ================= -->
+  <div class="toast-notification" id="toastNotification">
+    <span class="toast-message" id="toastMessage">Welcome to Bingo!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
