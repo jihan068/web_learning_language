@@ -1,6 +1,6 @@
 # Bingo - English Learning Landing Page
 
-Landing page modern dan interaktif untuk platform belajar bahasa Inggris **Bingo**, dirancang dengan tema visual energik dan fitur interaktif seperti kuis, navigasi multi-bahasa, serta modal autentikasi.
+Landing page modern dan interaktif untuk platform belajar bahasa Inggris **Bingo**, dirancang dengan tema visual energik dan fitur interaktif seperti kuis, navigasi multi-bahasa, serta modal autentikasi.https://jihan068.github.io/web_learning_language/
 
 ---
 
